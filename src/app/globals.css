@@ -43,3 +43,12 @@ body {
           scrollbar-width: none;  /* Firefox */
     }
   }
+
+  @font-face {
+    font-family: "Cascadia Code";
+    src: url("/fonts/CascadiaCode.ttf");
+  }
+  
+* {
+  font-family: "Cascadia Code", monospace;
+}
