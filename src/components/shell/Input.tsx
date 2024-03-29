@@ -1,10 +1,10 @@
 "use client";
 
 import { SHELL_COMMANDS_RESPONSE } from "@/app/bin";
-import { useRouter } from "next/navigation";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { CompareInputValue } from "./compare-input-value";
 import HandleCommandInput from "./handle-command-input";
+import useStore from "@/store/useStore";
 
 type InputProps = {
   shellInput: string;
@@ -16,6 +16,7 @@ type InputProps = {
   setShowInput: Dispatch<SetStateAction<boolean>>;
   cmdHistory: string[];
   setCmdHistory: Dispatch<SetStateAction<string[]>>;
+  setShowQuestion: Dispatch<SetStateAction<boolean>>,
 };
 
 const Input = ({
@@ -25,12 +26,11 @@ const Input = ({
   setBanner,
   setShowInput,
   cmdHistory,
-  setCmdHistory
+  setCmdHistory,
+  setShowQuestion
 }: InputProps) => {
   const [comparedValue, setComparedValue] = useState<boolean>(false);
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
-  const router = useRouter();
-  console.log(cmdHistory)
   
   // comparing the input value to the set commands and rendering it only when shellInput changes.
   useEffect(() => {
@@ -46,7 +46,7 @@ const Input = ({
     // handle command input handles exception command input. commands does not need to display info but to take input or other response.
     if (response) {
       setHistory((prevHistory) => [...prevHistory, { command, response }]);
-      HandleCommandInput(command, setHistory, router, setBanner, setShowInput);
+      HandleCommandInput(command, setHistory, setBanner, setShowInput, setShowQuestion);
     } else {
       setHistory((prevHistory) => [
         ...prevHistory,

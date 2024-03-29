@@ -55,7 +55,7 @@ const StoryMode = ({ setStoryLine }: StoryModeProps) => {
     <>
       <div className="flex h-full">
         <div className="flex-1 flex justify-center flex-col">
-          <CustomTypewriter speed={0} text={CurrentLevel()}>
+          <CustomTypewriter speed={2} text={CurrentLevel()}>
             <div>
               <div className="flex items-center mt-2">
                 <div className="mt2">&#62;</div>
@@ -63,7 +63,7 @@ const StoryMode = ({ setStoryLine }: StoryModeProps) => {
                   type="number"
                   autoFocus
                   spellCheck="false"
-                  placeholder={`redirect to terminal in ${countdown} seconds`}
+                  placeholder={`redirect to terminal in ${countdown} seconds or enter to exit`}
                   className="bg-transparent border-none outline-none number-input ml-3 w-full placeholder:text-sm placeholder:text-red-500"
                   onKeyDown={handleEnter}
                 />

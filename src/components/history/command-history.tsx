@@ -5,10 +5,6 @@ type CommandHistoryProps = {
 const CommandHistory = ({ history }: CommandHistoryProps) => {
   // Split the response array into chunks of 2 words
   const chunks = history.response.reduce<string[][]>((resultArray, item, index) => {
-    let l = 2;
-    if (item.includes("\n")) {
-      l = 3;
-    }
     const chunkIndex = Math.floor(index / 2); 
     
     if (!resultArray[chunkIndex]) {
