@@ -5,6 +5,10 @@ interface State {
   toggleUsername: () => void;
   player: any;
   setPlayer: (playerDetail: any) => void;
+  token: string;
+  setJwtToken: (token: string) => void;
+  showQuestion: boolean;
+  setShowQuestion: (showQuestion: boolean) => void;
 }
 
 const useStore = create<State>((set) => ({
@@ -12,9 +16,13 @@ const useStore = create<State>((set) => ({
   toggleUsername: () => set((state) => ({ isUsername: !state.isUsername })),
   player: {},
   setPlayer: (playerDetail: any) => {
-    console.log('Setting player:', playerDetail); 
-    set({ player: playerDetail });
+    set((state) => ({ ...state, player: playerDetail }));
+    console.log('playerdeyails', playerDetail);
   },
+  token: "",
+  setJwtToken: (token: any) => { set((state) => ({ ...state, token: token })) },
+  showQuestion: true,
+  setShowQuestion: (question: boolean) => { set((state) => ({ ...state, showQuestion: question })) }
 }));
 
 export default useStore;

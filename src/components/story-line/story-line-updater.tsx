@@ -1,19 +1,13 @@
+const StoryLineUpdater = (): boolean => {
+  const targetDate = new Date("March 29, 2024 16:20:00").getTime();
+  const currentTime = new Date().getTime();
+  console.log("storylineupdater", targetDate < currentTime);
 
-const StoryLineUpdater = (
-): boolean => {
-  const checkDateTime = () => {
-    const targetDate = new Date("March 31, 2024 02:00:00").getTime();
-    const currentTime = new Date().getTime();
-    console.log("storylineupdater", targetDate < currentTime);
-
-    if (targetDate < currentTime) {
-      return true
-    } 
-  };
-
-  checkDateTime();
-
-  return false
+  if (targetDate < currentTime) {
+      return true;
+  } else {
+    return false;
+  }
 };
 
 export default StoryLineUpdater;

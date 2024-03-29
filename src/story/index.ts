@@ -69,7 +69,7 @@ export const LEVEL_2: string = `
       <span class="text-red-500 mr-2">Mr. Robot: </span> Welcome to the next level of the rabbit hole. It's
       time to penetrate one of E Corp's underbellies. 
       <div>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"><span class="text-green-400 underline">Here&apos;s</span></a>
+        <a href="https://evilcorp-pi.vercel.app/login" target="_blank"><span class="text-green-400 underline">Here&apos;s</span></a>
         the server address and some essential tools. Crack the login and
         expose their hidden data.
       </div>
@@ -93,7 +93,7 @@ export const LEVEL_3: string = `
       <span class="text-green-400 mr-2">Level 3: </span> Steel Mountain
     </div>
     <div><span class="text-yellow-400 mr-2">Objective: </span> Use various cybersecurity techniques to access a 
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="underline text-green-400">vault</a> containing sensitive data.</div>
+    <a href="https://evilcorp-pi.vercel.app/dashboard" target="_blank" class="underline text-green-400">vault</a> containing sensitive data.</div>
     <div>
       <span class="text-red-500 mr-2">Mr. Robot: </span> We're getting closer. This vault holds E Corp's
       filthy secrets, the kind they wouldn't want anyone to see.
@@ -123,7 +123,7 @@ export const LEVEL_4: string = `
     <span class="text-green-400 mr-2">Level 4: </span> Zeroes and Ones
   </div>
   <div>
-    <span class="text-yellow-400 mr-2">Objective: </span> Gain access and control over E Corp servers.
+    <span class="text-yellow-400 mr-2">Objective: </span> Gain access and control over <span class="text-green-400 underline"><a href="https://evilcorp-pi.vercel.app/vault" target="_blank"> E-Corp servers</span>.
   </div>
   <div>
     <span class="text-red-400 mr-2">Mr. Robot: </span> This is it. The final push. We need to gain control

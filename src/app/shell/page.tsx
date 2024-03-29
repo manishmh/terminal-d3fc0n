@@ -6,13 +6,14 @@ import CommandHistory from "@/components/history/command-history";
 import Login from "@/components/login/page";
 import Input from "@/components/shell/Input";
 import HandleFlagEntry from "@/components/shell/handle-flag-entry";
+import HandleQuestion from "@/components/shell/handle-question";
 import SetUsername from "@/components/shell/set-username";
 import WelcomeMessage from "@/components/shell/welcome-message";
 import StoryLineUpdater from "@/components/story-line/story-line-updater";
 import StoryMode from "@/components/story-line/story-mode";
-import { useEffect, useRef, useState } from "react";
-import useStore from "@/store/useStore";
 import { checkUsernameExists } from "@/store/useLocalstorage";
+import {  useEffect, useRef, useState } from "react";
+import { MyComponent } from "../bin";
 
 const Shell = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -20,13 +21,13 @@ const Shell = () => {
     { command: string; response: string[] }[]
   >([]);
   const [shellInput, setShellInput] = useState<string>("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);  // todo: turn it false when pushin to production
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [banner, setBanner] = useState<boolean>(true);
   const [showInput, setShowInput] = useState(true);
+  const [showQuestion, setShowQuestion] = useState(true);
   const [cmdHistory, setCmdHistory] = useState<string[]>([]);
   const [storyLine, setStoryLine] = useState<boolean>(false);
-  const { player } = useStore();
-  
+
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
@@ -34,13 +35,16 @@ const Shell = () => {
   }, [history]);
 
   useEffect(() => {
-    const updateStory = StoryLineUpdater()
+    const updateStory = StoryLineUpdater();
     if (updateStory) {
-      setStoryLine(true) 
+      setStoryLine(true);
     }
-  },[])
+  }, []);
 
+
+  MyComponent();
   const UsernameExists = checkUsernameExists();
+
 
   return (
     <div className="p-4 md:p-8 h-screen font-sans">
@@ -50,7 +54,9 @@ const Shell = () => {
           ref={containerRef}
         >
           {!UsernameExists && <SetUsername />}
-          {!isLoggedIn && UsernameExists && <Login setIsLoggedIn={setIsLoggedIn} />}
+          {!isLoggedIn && UsernameExists && (
+            <Login setIsLoggedIn={setIsLoggedIn} />
+          )}
           {isLoggedIn && storyLine && <StoryMode setStoryLine={setStoryLine} />}
           {isLoggedIn && !storyLine && (
             <>
@@ -62,9 +68,16 @@ const Shell = () => {
                 <HandleFlagEntry
                   setShowInput={setShowInput}
                   setHistory={setHistory}
+                  setStoryLine={setStoryLine}
                 />
               )}
-              {showInput && (
+              {!showQuestion && (
+                <HandleQuestion
+                  setHistory={setHistory}
+                  setShowQuestion={setShowQuestion}
+                />
+              )}
+              {showInput && showQuestion && (
                 <Input
                   shellInput={shellInput}
                   setShellInput={setShellInput}
@@ -73,6 +86,7 @@ const Shell = () => {
                   setShowInput={setShowInput}
                   cmdHistory={cmdHistory}
                   setCmdHistory={setCmdHistory}
+                  setShowQuestion={setShowQuestion}
                 />
               )}
             </>

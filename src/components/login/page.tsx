@@ -12,7 +12,7 @@ const Login = ({ setIsLoggedIn }: LoginProps) => {
   const [usernameEntered, setUsernameEntered] = useState(true);
   const [passwordEntered, setPasswordEntered] = useState(false);
   const [isPending, startTransition] = useTransition();
-  const { setPlayer } = useStore();
+  const { setPlayer, setJwtToken } = useStore();
 
   const handleUsernameEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && username.trim() !== "") {
@@ -36,13 +36,23 @@ const Login = ({ setIsLoggedIn }: LoginProps) => {
       startTransition(async () => {
         try {
           const response = await fetchUserData(username.trim(), password.trim());
-          const playerData = await response.json();
+          const data = await response.json();
 
           if (response.status === 200) {
-            setPlayer(playerData.player)
-            setHistory((prev) => [...prev, "Login successful"]);
-            setIsLoggedIn(true);
+            const token = data.token;
 
+            const playerData = {
+              userName: data.userName,
+              level: data.level,
+              currentQuest: data.currentQuestion,
+              score: data.score,
+              token: token
+            };
+            setPlayer(playerData)
+            setHistory((prev) => [...prev, "Login successful"]);
+
+            setJwtToken(token)
+            setIsLoggedIn(true);
           } else {
             setHistory((prev) => [
               ...prev,
@@ -65,8 +75,7 @@ const Login = ({ setIsLoggedIn }: LoginProps) => {
   const fetchUserData = async (username: string, password: string) => {
     try {
       const login_res = await fetch(
-        // "https://d3fcon-backend.onrender.com/auth/login",
-        "http://localhost:3001/auth/login",
+        "https://d3fcon-backend.onrender.com/auth/login",
         {
           method: "POST",
           headers: {

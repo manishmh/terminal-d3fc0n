@@ -3,54 +3,48 @@ import { Dispatch, SetStateAction, useState, useTransition } from "react";
 
 type HandleFlagEntryProps = {
   setHistory: Dispatch<
-    SetStateAction<{ command: string; response: string[] }[]>
-  >;
-  setShowInput: Dispatch<SetStateAction<boolean>>;
-  setStoryLine: Dispatch<SetStateAction<boolean>>;
-
+    SetStateAction<{ command: string; response: string[] }[]>>,
+    setShowQuestion: Dispatch<SetStateAction<boolean>>,
 };
 
-const HandleFlagEntry = ({
-  setShowInput,
+const HandleQuestion = ({
   setHistory,
-  setStoryLine
+  setShowQuestion
 }: HandleFlagEntryProps) => {
   const [isPending, startTransition] = useTransition();
-  const [flag, setFlag] = useState("");
-  const { token, player, setPlayer } = useStore()
+  const [answer, setAnswer] = useState("");
+  const { token, setPlayer, player } = useStore()
 
   const handleFlagSubmit = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter" || event.code === "13") {
       startTransition( async () => {
         try {
-          const response = await fetch("https://d3fcon-backend.onrender.com/submit/flag", {
+          const response = await fetch("https://d3fcon-backend.onrender.com/submit/question", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
               "Authorization": `Bearer ${token}` 
             },
-            body: JSON.stringify({ flag }),
+            body: JSON.stringify({ answer }),
           })
           console.log('response', response)
           const data = await response.json();
           console.log('data', data);
 
           if (response.status === 200) {
-            const newLevel = player.level + 1;
+            const newCurrentQuest = player.currentQuest + 1;
             const updatedPlayer = {
               userName: player.userName,
-              level: newLevel,
+              level: player.level,
               token: player.token,
-              currentQuest: player.currentQuest,
+              currentQuest: newCurrentQuest,
             }
 
             setPlayer(updatedPlayer)
-            setHistory((prevHistory) => [...prevHistory, { command: "", response: [data.message] }]);
-            setStoryLine(true)
+            setHistory((prevHistory) => [...prevHistory, { command: "", response: [`answer: ${answer}`, data.message] }]);
+          } else setHistory((prevHistory) => [...prevHistory, { command: "", response: [`answer: ${answer}` ,data.message] }]);
 
-          } else setHistory((prevHistory) => [...prevHistory, { command: "", response: [data.message] }]);
-
-          setShowInput(true);
+          setShowQuestion(true);
         } catch (error) {
           console.error(error)  
         }
@@ -60,16 +54,16 @@ const HandleFlagEntry = ({
 
   return (
     <>
-      {isPending && <div>checking flag...</div>}
+      {isPending && <div>checking answer...</div>}
       <div className="flex gap-1">
         <div>answer: </div>
         <input
           type="text"
           autoFocus
           spellCheck="false"
-          value={flag}
+          value={answer}
           onKeyDown={handleFlagSubmit}
-          onChange={(e) => setFlag(e.target.value)}
+          onChange={(e) => setAnswer(e.target.value)}
           className="w-full bg-transparent border-none outline-none"
         />
       </div>
@@ -77,4 +71,4 @@ const HandleFlagEntry = ({
   );
 };
 
-export default HandleFlagEntry;
+export default HandleQuestion;
