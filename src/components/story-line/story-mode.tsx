@@ -55,7 +55,7 @@ const StoryMode = ({ setStoryLine }: StoryModeProps) => {
     <>
       <div className="flex h-full">
         <div className="flex-1 flex justify-center flex-col">
-          <CustomTypewriter speed={2} text={CurrentLevel()}>
+          <CustomTypewriter speed={10} text={CurrentLevel()}>
             <div>
               <div className="flex items-center mt-2">
                 <div className="mt2">&#62;</div>
