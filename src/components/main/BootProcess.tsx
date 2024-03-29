@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { bootText } from "./WelcomeText";
 import WelcomeBox from "./WelcomeBox";
 import CustomTypewriter from "./CustomWriter";
@@ -24,7 +24,7 @@ const TypewriterEffect: React.FC = () => {
           -Zone ranges:
           <br />
         </div>
-        <CustomTypewriter text={bootText} speed={1} ><WelcomeBox/></CustomTypewriter>
+        <CustomTypewriter text={bootText} speed={2} ><WelcomeBox/></CustomTypewriter>
       </div>
     </>
   );

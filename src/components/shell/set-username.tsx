@@ -1,23 +1,33 @@
+import { useState, useTransition } from "react";
 import useStore from "@/store/useStore";
-import { Dispatch, SetStateAction, useState, useTransition } from "react";
+import { setLocalUsername } from "@/store/useLocalstorage";
 
-type LoginProps = {
-  setIsLoggedIn: Dispatch<SetStateAction<boolean>>;
-};
-
-const Login = ({ setIsLoggedIn }: LoginProps) => {
+const SetUser = () => {
+  const { toggleUsername } = useStore();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [roll, setRoll] = useState("");
   const [history, setHistory] = useState<string[]>([]);
-  const [usernameEntered, setUsernameEntered] = useState(true);
+  const [usernameEntered, setUsernameEntered] = useState(false);
   const [passwordEntered, setPasswordEntered] = useState(false);
+  const [rollEntered, setRollEntered] = useState(true);
   const [isPending, startTransition] = useTransition();
-  const { setPlayer } = useStore();
+
+  const handleRollEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && roll.trim() !== "") {
+      setHistory((prev) => [...prev, `roll: ${roll}`]);
+
+      setRollEntered(false)
+      setUsernameEntered(true)
+    }
+  };
 
   const handleUsernameEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && username.trim() !== "") {
+        console.log('enterered')
       setHistory((prev) => [...prev, `username: ${username}`]);
-      setUsernameEntered(false);
+
+      setUsernameEntered(false)
       setPasswordEntered(true);
     }
   };
@@ -35,44 +45,47 @@ const Login = ({ setIsLoggedIn }: LoginProps) => {
 
       startTransition(async () => {
         try {
-          const response = await fetchUserData(username.trim(), password.trim());
-          const playerData = await response.json();
-
+          const response = await fetchUserData(username.trim(), password.trim(), roll.trim());
           if (response.status === 200) {
-            setPlayer(playerData.player)
-            setHistory((prev) => [...prev, "Login successful"]);
-            setIsLoggedIn(true);
+            setHistory((prev) => [...prev, "username set successfully"]);
+            setLocalUsername(username);
+            toggleUsername();
 
-          } else {
+          } else if (response.status === 404) {
             setHistory((prev) => [
               ...prev,
-              "Error: Incorrect username or password",
+              "roll number not found",
             ]);
-            setUsernameEntered(true);
+          }
+          else {
+            setHistory((prev) => [
+              ...prev,
+              "username already set",
+            ]);
           }
         } catch (error) {
           console.error("Error during login:", error);
           setHistory((prev) => [...prev, "Error: Login failed"]);
-          setUsernameEntered(true);
         } finally {
+            setRoll("")
             setUsername("");
             setPassword("");
+            setRollEntered(true);
         }
       });
     }
   };
 
-  const fetchUserData = async (username: string, password: string) => {
+  const fetchUserData = async (username: string, password: string, roll: string) => {
     try {
       const login_res = await fetch(
-        // "https://d3fcon-backend.onrender.com/auth/login",
-        "http://localhost:3001/auth/login",
+        "https://d3fcon-backend.onrender.com/auth/setUsername",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ username, password }),
+          body: JSON.stringify({ username, password, roll }),
         }
       );
       return login_res;
@@ -83,16 +96,27 @@ const Login = ({ setIsLoggedIn }: LoginProps) => {
 
   return (
     <div className="">
-      <div className="text-red-500 text-lg">Login to start hacking...</div>
-      <div className="">
-        Check your registered email for your username and password
-      </div>
+      <div className="text-red-500 text-lg">set username</div>
       <div>
         {history.map((entry, index) => (
           <div key={index}>{entry}</div>
         ))}
       </div>
       {isPending && <div className="text-green-500 text-lg">loading...</div>}
+      {rollEntered && (
+        <div className="flex gap-1">
+          <span className="flex-shrink-0">Roll number: </span>
+          <input
+            autoFocus
+            type="text"
+            spellCheck="false"
+            value={roll}
+            className="w-full bg-transparent border-none outline-none "
+            onChange={(e) => setRoll(e.target.value)}
+            onKeyDown={handleRollEnter}
+          />
+        </div>
+      )}
       {usernameEntered && (
         <div className="flex gap-1">
           <span>username: </span>
@@ -125,4 +149,4 @@ const Login = ({ setIsLoggedIn }: LoginProps) => {
   );
 };
 
-export default Login;
+export default SetUser;

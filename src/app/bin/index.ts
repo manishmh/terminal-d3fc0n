@@ -1,9 +1,18 @@
-export const SHELL_COMMANDS = ["leaderboard", "hint", "help", "flag", "whoami"];
+export const SHELL_COMMANDS = ["ls","leaderboard", "hint", "help", "flag", "whoami", "clear",];
 
-export const SHELL_COMMANDS_RESPONSE: { [key: string]: string[] } = {
-  hint: SHELL_COMMANDS,
+export let SHELL_COMMANDS_RESPONSE: { [key: string]: string[] } = {
+  ls: SHELL_COMMANDS,
+  leaderboard: [],
+  hint: ["hints go here"],
   help: ["this is the help text", "another line of help text"],
+  flag: [],
   whoami: ["user information"],
-  leaderboard: [''],
-  flag: [''],
+  clear: [],
+};
+
+export const updateShellResponse = (key: string, newValue: string[]) => {
+  SHELL_COMMANDS_RESPONSE = {
+    ...SHELL_COMMANDS_RESPONSE,
+    [key]: newValue, 
+  };
 };

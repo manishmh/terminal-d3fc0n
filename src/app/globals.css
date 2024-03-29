@@ -44,11 +44,17 @@ body {
     }
   }
 
-  @font-face {
+  /* @font-face {
     font-family: "Cascadia Code";
     src: url("/fonts/CascadiaCode.ttf");
-  }
+  } */
   
 * {
-  font-family: "Cascadia Code", monospace;
+  /* font-family: "Cascadia Code", monospace; */
+}
+
+number-input::-webkit-outer-spin-button,
+.number-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

@@ -3,8 +3,12 @@ type CommandHistoryProps = {
 };
 
 const CommandHistory = ({ history }: CommandHistoryProps) => {
-  // Split the response array into chunks of 4 words
+  // Split the response array into chunks of 2 words
   const chunks = history.response.reduce<string[][]>((resultArray, item, index) => {
+    let l = 2;
+    if (item.includes("\n")) {
+      l = 3;
+    }
     const chunkIndex = Math.floor(index / 2); 
     
     if (!resultArray[chunkIndex]) {
@@ -16,22 +20,22 @@ const CommandHistory = ({ history }: CommandHistoryProps) => {
     return resultArray;
   }, []);
 
+  const renderHTML = (html: string) => ({ __html: html });
+
   return (
-    <div className="font-sans space-y-[-5px] mb-1">
+    <div className="space-y-[-5px] mb-1">
       <div className="font-medium text-lg flex bg-gray700 gap-[2px] items-center">
         <span className="text-[#19fc00]">anonymous@d3fc0n</span>
         <span>:</span>
         <span className="text-base">$</span>
         <span>~</span>
-        <span>{history.command}</span>
+        <span className="ml-1">{history.command}</span>
       </div>
       <div className="flex max-w-4xl flex-wrap gap-12">
         {chunks.map((chunk, chunkIndex) => (
           <div key={chunkIndex} className="flex flex-col">
             {chunk.map((word, index) => (
-              <span key={index} className={`word${index}`}>
-                {word}
-              </span>
+              <span key={index} className={`word${index}`} dangerouslySetInnerHTML={renderHTML(word)} />
             ))}
           </div>
         ))}
