@@ -27,7 +27,7 @@ const CommandHistory = ({ history }: CommandHistoryProps) => {
         <span>~</span>
         <span className="ml-1">{history.command}</span>
       </div>
-      <div className="flex max-w-4xl flex-wrap gap-12">
+      <div className="flex max-w-4xl flex-wrap gap-x-12">
         {chunks.map((chunk, chunkIndex) => (
           <div key={chunkIndex} className="flex flex-col">
             {chunk.map((word, index) => (

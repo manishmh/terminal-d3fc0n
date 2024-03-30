@@ -4,7 +4,6 @@ import { SHELL_COMMANDS_RESPONSE } from "@/app/bin";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { CompareInputValue } from "./compare-input-value";
 import HandleCommandInput from "./handle-command-input";
-import useStore from "@/store/useStore";
 
 type InputProps = {
   shellInput: string;

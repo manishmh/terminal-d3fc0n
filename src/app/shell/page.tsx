@@ -47,7 +47,7 @@ const Shell = () => {
 
 
   return (
-    <div className="p-4 md:p-8 h-screen font-sans">
+    <div className="p-4 md:p-8 h-screen font-sans" suppressHydrationWarning={true}>
       <div className=" h-full overflow-hidden">
         <div
           className=" h-full overflow-y-auto no-scrollbar"
