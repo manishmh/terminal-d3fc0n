@@ -33,9 +33,7 @@ const HandleFlagEntry = ({
               body: JSON.stringify({ flag }),
             }
           );
-          console.log("response", response);
           const data = await response.json();
-          console.log("data", data);
 
           if (response.status === 200) {
             const newLevel = player.level + 1;

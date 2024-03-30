@@ -72,7 +72,7 @@ const StoryMode = ({ setStoryLine }: StoryModeProps) => {
           </CustomTypewriter>
         </div>
         <div className="flex-1 md:max-w-md xl:max-w-xl ">
-          <CustomTypewriter speed={1} text={MRROBOT}>
+          <CustomTypewriter speed={10} text={MRROBOT}>
             <span></span>
           </CustomTypewriter>
         </div>

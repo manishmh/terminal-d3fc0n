@@ -8,7 +8,6 @@ const handleCommandInput = (
     setShowQuestion: (showQuestion: boolean) => void
     ) => { 
     const input = shellInput.toLowerCase();
-    console.log('input', input);
 
     switch (input) {
         case "leaderboard":

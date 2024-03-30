@@ -56,7 +56,6 @@ const Input = ({
   };
 
   const onSubmit = async (event: React.KeyboardEvent<HTMLInputElement>) => {
-    // console.log(event)
     if (event.key === "Enter" || event.code === "13") {
       event.preventDefault();
 
