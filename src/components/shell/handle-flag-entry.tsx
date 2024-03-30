@@ -7,33 +7,35 @@ type HandleFlagEntryProps = {
   >;
   setShowInput: Dispatch<SetStateAction<boolean>>;
   setStoryLine: Dispatch<SetStateAction<boolean>>;
-
 };
 
 const HandleFlagEntry = ({
   setShowInput,
   setHistory,
-  setStoryLine
+  setStoryLine,
 }: HandleFlagEntryProps) => {
   const [isPending, startTransition] = useTransition();
   const [flag, setFlag] = useState("");
-  const { token, player, setPlayer } = useStore()
+  const { token, player, setPlayer } = useStore();
 
   const handleFlagSubmit = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter" || event.code === "13") {
-      startTransition( async () => {
+      startTransition(async () => {
         try {
-          const response = await fetch("https://d3fcon-backend.onrender.com/submit/flag", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": `Bearer ${token}` 
-            },
-            body: JSON.stringify({ flag }),
-          })
-          console.log('response', response)
+          const response = await fetch(
+            "https://d3fcon-backend.onrender.com/submit/flag",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({ flag }),
+            }
+          );
+          console.log("response", response);
           const data = await response.json();
-          console.log('data', data);
+          console.log("data", data);
 
           if (response.status === 200) {
             const newLevel = player.level + 1;
@@ -42,17 +44,25 @@ const HandleFlagEntry = ({
               level: newLevel,
               token: player.token,
               currentQuest: player.currentQuest,
-            }
+            };
 
-            setPlayer(updatedPlayer)
-            setHistory((prevHistory) => [...prevHistory, { command: "", response: [data.message] }]);
-            setStoryLine(true)
-
-          } else setHistory((prevHistory) => [...prevHistory, { command: "", response: [data.message] }]);
+            setPlayer(updatedPlayer);
+            setHistory((prevHistory) => [
+              ...prevHistory,
+              { command: "", response: [data.message] },
+            ]);
+            setTimeout(() => {
+              setStoryLine(true);
+            }, 2000);
+          } else
+            setHistory((prevHistory) => [
+              ...prevHistory,
+              { command: "", response: [data.message] },
+            ]);
 
           setShowInput(true);
         } catch (error) {
-          console.error(error)  
+          console.error(error);
         }
       });
     }
