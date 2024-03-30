@@ -27,9 +27,7 @@ const HandleQuestion = ({
             },
             body: JSON.stringify({ answer }),
           })
-          console.log('response', response)
           const data = await response.json();
-          console.log('data', data);
 
           if (response.status === 200) {
             const newCurrentQuest = player.currentQuest + 1;

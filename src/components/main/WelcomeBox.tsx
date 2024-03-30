@@ -6,7 +6,6 @@ const WelcomeBox: React.FC<{}> = () => {
 
   useEffect(() => {
     const handleEnter = () => {
-      console.log("Redirecting to /shell");
       router.push("/shell");
     };
   

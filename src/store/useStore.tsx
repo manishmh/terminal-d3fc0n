@@ -17,7 +17,6 @@ const useStore = create<State>((set) => ({
   player: {},
   setPlayer: (playerDetail: any) => {
     set((state) => ({ ...state, player: playerDetail }));
-    console.log('playerdeyails', playerDetail);
   },
   token: "",
   setJwtToken: (token: any) => { set((state) => ({ ...state, token: token })) },

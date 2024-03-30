@@ -24,7 +24,6 @@ const SetUser = () => {
 
   const handleUsernameEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && username.trim() !== "") {
-        console.log('enterered')
       setHistory((prev) => [...prev, `username: ${username}`]);
 
       setUsernameEntered(false)
