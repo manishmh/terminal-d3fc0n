@@ -96,7 +96,7 @@ const Input = ({
         value={shellInput}
         onKeyDown={onSubmit}
         autoComplete="off"
-        onChange={(e) => setShellInput(e.target.value)}
+        onChange={(e) => setShellInput(e.target.value.toLowerCase())}
         className={`w-full bg-transparent border-0 outline-none caret-[#19fc00] pl-[2px] 
           ${comparedValue ? "text-[#19fc00]" : "text-red-500"} 
         `}

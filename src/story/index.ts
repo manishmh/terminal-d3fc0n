@@ -31,7 +31,7 @@ export let LEVEL_1: string = `
     <div><span class="text-yellow-400">Level 1:</span> Welcome to Fsociety.</div>
     </br>
     <div>
-      <span class="text-yellow-400 mr-2"> Objective:</span> Locate a hidden file on the fsociety welcome <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="underline text-green-400" target="_blank"> page.</a>
+      <span class="text-yellow-400 mr-2"> Objective:</span> Locate a hidden file on the fsociety welcome <a href="http://e-corp.live/" class="underline text-green-400" target="_blank"> page.</a>
     </div>
     </br>
     <div>
@@ -69,7 +69,7 @@ export const LEVEL_2: string = `
       time to penetrate one of E Corp's underbellies. 
       </br>
       <div>
-        <a href="https://evilcorp-pi.vercel.app/login" target="_blank"><span class="text-green-400 underline">Here&apos;s</span></a>
+        <a href="http://e-corp.live/login" target="_blank"><span class="text-green-400 underline">Here&apos;s</span></a>
         the server address and some essential tools. Crack the login and
         expose their hidden data.
       </div>
@@ -98,7 +98,7 @@ export const LEVEL_3: string = `
     </div>
     </br>
     <div><span class="text-yellow-400 mr-2">Objective: </span> Use various cybersecurity techniques to access a 
-    <a href="https://evilcorp-pi.vercel.app/dashboard" target="_blank" class="underline text-green-400">vault</a> containing sensitive data.</div>
+    <a href="http://e-corp.live/dashboard" target="_blank" class="underline text-green-400">vault</a> containing sensitive data.</div>
     </br>
     <div>
       <span class="text-red-500 mr-2">Mr. Robot: </span> We're getting closer. This vault holds E Corp's
@@ -134,7 +134,8 @@ export const LEVEL_4: string = `
   </div>
     </br>
   <div>
-    <span class="text-yellow-400 mr-2">Objective: </span> Gain access and control over <span class="text-green-400 underline"><a href="https://evilcorp-pi.vercel.app/vault" target="_blank"> E-Corp servers</span>.
+    <span class="text-yellow-400 mr-2">Objective: </span> Gain access and control over <span class="text-green-400 underline">
+    <a href="http://e-corp.live/vault" target="_blank"> E-Corp servers</span>.
   </div>
     </br>
   <div>
@@ -150,17 +151,6 @@ export const LEVEL_4: string = `
     management to take control of virtual servers within the game.
   </div>
     </br>
-</div>
-`
-export const LEVEL_5 = `
-<div>
-  <div>
-    dkjfdakfjdfldjfkldfkdldaka
-  </div>
-  </br>
-  <div>
-    Enter the above string to this e-corp's <a href="http://e-corp.live/vault" target="_blank"><span>vaul</span></a>
-  </div>
 </div>
 `
 
