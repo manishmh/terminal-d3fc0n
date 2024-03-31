@@ -9,7 +9,7 @@ type StoryModeProps = {
 
 const StoryMode = ({ setStoryLine }: StoryModeProps) => {
   const { player } = useStore();
-  let level: 1 | 2 | 3 | 4 | 5  = 5;
+  let level: 1 | 2 | 3 | 4 | 5  = player.level;
   const [countdown, setCountdown] = useState(120);
 
   const NEW_LEVEL_1: string = LEVEL_1.replace("[User]", player.userName);
