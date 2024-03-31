@@ -158,7 +158,11 @@ export const OUTRO: string = `
 <div>
 <div>
   <div>
-    dkjfdakfjdfldjfkldfkdldaka
+    n=kx-dlf879-zs8h
+  </div>
+  </br>
+  <div>
+    key= D3FC0N
   </div>
   <div>
   Enter the above string to this e-corp's <a href="http://e-corp.live/vault" target="_blank"><span class="text-green-400">vault</span></a>
