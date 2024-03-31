@@ -9,8 +9,8 @@ type StoryModeProps = {
 
 const StoryMode = ({ setStoryLine }: StoryModeProps) => {
   const { player } = useStore();
-  let level: 1 | 2 | 3 | 4  = player.level;
-  const [countdown, setCountdown] = useState(level === 1 ? 100 : 60);
+  let level: 1 | 2 | 3 | 4 | 5  = 5;
+  const [countdown, setCountdown] = useState(120);
 
   const NEW_LEVEL_1: string = LEVEL_1.replace("[User]", player.userName);
 
@@ -24,6 +24,8 @@ const StoryMode = ({ setStoryLine }: StoryModeProps) => {
         return LEVEL_3;
       case 4:
         return LEVEL_4;
+      case 5:
+        return OUTRO;
       default:
         return "";
     }
@@ -55,7 +57,7 @@ const StoryMode = ({ setStoryLine }: StoryModeProps) => {
     <>
       <div className="flex h-full">
         <div className="flex-1 flex justify-center flex-col">
-          <CustomTypewriter speed={1} text={CurrentLevel()}>
+          <CustomTypewriter speed={10} text={CurrentLevel()}>
             <div>
               <div className="flex items-center mt-2">
                 <div className="mt2">&#62;</div>
@@ -72,7 +74,7 @@ const StoryMode = ({ setStoryLine }: StoryModeProps) => {
           </CustomTypewriter>
         </div>
         <div className="flex-1 md:max-w-md xl:max-w-xl ">
-          <CustomTypewriter speed={10} text={MRROBOT}>
+          <CustomTypewriter speed={1} text={MRROBOT}>
             <span></span>
           </CustomTypewriter>
         </div>

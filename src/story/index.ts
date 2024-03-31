@@ -152,12 +152,35 @@ export const LEVEL_4: string = `
     </br>
 </div>
 `
+export const LEVEL_5 = `
+<div>
+  <div>
+    dkjfdakfjdfldjfkldfkdldaka
+  </div>
+  </br>
+  <div>
+    Enter the above string to this e-corp's <a href="http://e-corp.live/vault" target="_blank"><span>vaul</span></a>
+  </div>
+</div>
+`
+
 export const OUTRO: string = `
 <div>
-<span class="text-red-500 mr-2">Mr. Robot: </span> You have outdone yourself! You've proven your
-skills and your dedication to fsociety.</br> Remember, this is only
-the beginning. The fight against E Corp continues. Viva la
-resistance, comrade!
+<div>
+  <div>
+    dkjfdakfjdfldjfkldfkdldaka
+  </div>
+  <div>
+  Enter the above string to this e-corp's <a href="http://e-corp.live/vault" target="_blank"><span class="text-green-400">vault</span></a>
+  </div>
+  </div>
+  </br>
+<div>
+  <span class="text-red-500 mr-2">Mr. Robot: </span> You have outdone yourself! You've proven your
+  skills and your dedication to fsociety.</br> Remember, this is only
+  the beginning. The fight against E Corp continues. Viva la
+  resistance, comrade!
+</div>
 </div>
 </br>
 `

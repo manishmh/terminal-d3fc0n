@@ -41,47 +41,49 @@ export const MyComponent = () => {
   // Set hint and status based on player's level
   if (player.level === 1) {
     if (player.currentQuest === 1) {
-      question = "Where did you find the data ?"
+      question = "website url ?"
     } else if (player.currentQuest === 2) {
-      question = "What was the encryption used ?"
+      question = "name of founder 1 ?"
     } else if (player.currentQuest === 3) {
-      question = ""
+      question = " inventor of steganography ?"
     };
 
-    flag="what was the encrypted flag ?"
+    flag="ftp url ?"
     hint = `<a href='https://evilcorp-pi.vercel.app/' target="_blank" class="text-green-400 underline">fsociety welcome page</a>`;
   } else if (player.level === 2) {
     if (player.currentQuest === 4) {
-      question = "Command used to fetch ?"
+      question = "wordlist name ? (hint: rock-you)"
     } else if (player.currentQuest === 5) {
-      question = "The type of file you fetched ?"
+      question = "api url ?"
     } else if (player.currentQuest === 6) {
-      question = ""
+      question = "correct password ?" 
     };
 
-    flag="What was the password ?"
+    flag="decrypted text ? hint - username: user"
     hint = `<a href='https://evilcorp-pi.vercel.app/login' target="_blank" class="text-green-400 underline">E-corp login address</a>`;
   } else if (player.level === 3) {
     if (player.currentQuest === 7) {
-      question = "encryption used for the text ?"
+      question = "port ?"
     } else if (player.currentQuest === 8) {
-      question = "how did you SSH into server ?"
+      question = "wordlist name  ?"
     } else if (player.currentQuest === 9) {
-      question = ""
+      question = "password: "
     };
 
-    flag="content of root.txt ?"
+    flag="contents of root.txt ?"
     hint = `<a href='https://evilcorp-pi.vercel.app/dashboard' target="_blank" class="text-green-400 underline">E-corp server address</a>`;
   } else if (player.level === 4) {
     if (player.currentQuest === 10) {
-      question = "Type of file provided ?"
+      question = "filename ?"
     } else if (player.currentQuest === 11) {
-      question = "which step updates the vault ?"
+      question = "encryption used ?"
     } else if (player.currentQuest === 12) {
-      question = ""
-    };
+      question = "best anime (hint: one piece)"
+    } else if (player.currentQuest === 13) {
+      question = "Enter the Flag for final level"
+    }
 
-    flag=""
+    flag="encrypted alias "
     hint = `<a href='https://evilcorp-pi.vercel.app/vault' target="_blank" class="text-green-400 underline">E-corp vault address</a>`;
   }
 
