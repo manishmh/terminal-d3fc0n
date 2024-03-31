@@ -14,6 +14,7 @@ import StoryMode from "@/components/story-line/story-mode";
 import { checkUsernameExists } from "@/store/useLocalstorage";
 import {  useEffect, useRef, useState } from "react";
 import { MyComponent } from "../bin";
+import Sponsers from "@/components/shell/sponsers";
 
 const Shell = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -93,6 +94,7 @@ const Shell = () => {
           )}
         </div>
       </div>
+      <Sponsers />
     </div>
   );
 };

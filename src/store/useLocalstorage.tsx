@@ -1,6 +1,6 @@
 export const setLocalUsername = (username: string): void => {
   if (typeof window !== "undefined") {
-    localStorage.setItem('username', username);
+    localStorage.setItem('username', `${username} // do not remove`);
   }
 };
 

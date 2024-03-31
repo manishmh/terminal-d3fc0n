@@ -10,9 +10,6 @@ const handleCommandInput = (
     const input = shellInput.toLowerCase();
 
     switch (input) {
-        case "leaderboard":
-            window.open('https://lb-d3fc0n.vercel.app/', '_blank');
-            break;
         case "clear":
             setBanner(false);
             setHistory([])

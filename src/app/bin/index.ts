@@ -1,10 +1,9 @@
 import useStore from "@/store/useStore";
 
-export const SHELL_COMMANDS = ["ls", "leaderboard", "hint", "help", "flag", "question", "status", "clear", "ls -l"];
+export const SHELL_COMMANDS = ["ls", "hint", "help", "flag", "question", "status", "clear", "ls -l"];
 
 export let SHELL_COMMANDS_RESPONSE: { [key: string]: string[] } = {
   ls: SHELL_COMMANDS,
-  leaderboard: [],
   hint: [""],
   help: ["raise your hand and call nearest co-ordinator"],
   flag: [],
@@ -13,7 +12,6 @@ export let SHELL_COMMANDS_RESPONSE: { [key: string]: string[] } = {
   clear: [],
   "ls -l": [
     "ls - List directory contents",
-    "leaderboard - Show the current leaderboard",
     "hint - Get a hint",
     "help - Display help information",
     "flag - Submit a flag",
