@@ -49,7 +49,7 @@ export const MyComponent = () => {
     };
 
     flag="ftp url ?"
-    hint = `<a href='https://evilcorp-pi.vercel.app/' target="_blank" class="text-green-400 underline">fsociety welcome page</a>`;
+    hint = `<a href='https://e-corp.live/' target="_blank" class="text-green-400 underline">fsociety welcome page</a>`;
   } else if (player.level === 2) {
     if (player.currentQuest === 4) {
       question = "wordlist name ? (hint: rock-you)"
@@ -60,7 +60,7 @@ export const MyComponent = () => {
     };
 
     flag="decrypted text ? hint - username: user"
-    hint = `<a href='https://evilcorp-pi.vercel.app/login' target="_blank" class="text-green-400 underline">E-corp login address</a>`;
+    hint = `<a href='https://e-corp.live/login' target="_blank" class="text-green-400 underline">E-corp login address</a>`;
   } else if (player.level === 3) {
     if (player.currentQuest === 7) {
       question = "port ?"
@@ -71,7 +71,7 @@ export const MyComponent = () => {
     };
 
     flag="contents of root.txt ?"
-    hint = `<a href='https://evilcorp-pi.vercel.app/dashboard' target="_blank" class="text-green-400 underline">E-corp server address</a>`;
+    hint = `<a href='https://e-corp.live/dashboard' target="_blank" class="text-green-400 underline">E-corp server address</a>`;
   } else if (player.level === 4) {
     if (player.currentQuest === 10) {
       question = "filename ?"
@@ -84,7 +84,7 @@ export const MyComponent = () => {
     }
 
     flag="encrypted alias "
-    hint = `<a href='https://evilcorp-pi.vercel.app/vault' target="_blank" class="text-green-400 underline">E-corp vault address</a>`;
+    hint = `<a href='https://e-corp.live/vault' target="_blank" class="text-green-400 underline">E-corp vault address</a>`;
   }
 
   updateShellResponse("question", [question])
