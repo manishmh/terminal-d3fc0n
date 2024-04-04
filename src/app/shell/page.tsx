@@ -48,55 +48,54 @@ const Shell = () => {
 
 
   return (
-    <div>CTF time over. checkout this for <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">rewards</a></div>
-    // <div className="p-4 md:p-8 h-screen font-sans" suppressHydrationWarning={true}>
-    //   <div className=" h-full overflow-hidden">
-    //     <div
-    //       className=" h-full overflow-y-auto no-scrollbar"
-    //       ref={containerRef}
-    //     >
-    //       {!UsernameExists && <SetUsername />}
-    //       {!isLoggedIn && UsernameExists && (
-    //         <Login setIsLoggedIn={setIsLoggedIn} />
-    //       )}
-    //       {isLoggedIn && storyLine && <StoryMode setStoryLine={setStoryLine} />}
-    //       {isLoggedIn && !storyLine && (
-    //         <>
-    //           {banner && <WelcomeMessage />}
-    //           {history.map((his, index) => (
-    //             <CommandHistory history={his} key={index} />
-    //           ))}
-    //           {!showInput && (
-    //             <HandleFlagEntry
-    //               setShowInput={setShowInput}
-    //               setHistory={setHistory}
-    //               setStoryLine={setStoryLine}
-    //             />
-    //           )}
-    //           {!showQuestion && (
-    //             <HandleQuestion
-    //               setHistory={setHistory}
-    //               setShowQuestion={setShowQuestion}
-    //             />
-    //           )}
-    //           {showInput && showQuestion && (
-    //             <Input
-    //               shellInput={shellInput}
-    //               setShellInput={setShellInput}
-    //               setHistory={setHistory}
-    //               setBanner={setBanner}
-    //               setShowInput={setShowInput}
-    //               cmdHistory={cmdHistory}
-    //               setCmdHistory={setCmdHistory}
-    //               setShowQuestion={setShowQuestion}
-    //             />
-    //           )}
-    //         </>
-    //       )}
-    //     </div>
-    //   </div>
-    //   <Sponsers />
-    // </div>
+    <div className="p-4 md:p-8 h-screen font-sans" suppressHydrationWarning={true}>
+      <div className=" h-full overflow-hidden">
+        <div
+          className=" h-full overflow-y-auto no-scrollbar"
+          ref={containerRef}
+        >
+          {!UsernameExists && <SetUsername />}
+          {!isLoggedIn && UsernameExists && (
+            <Login setIsLoggedIn={setIsLoggedIn} />
+          )}
+          {isLoggedIn && storyLine && <StoryMode setStoryLine={setStoryLine} />}
+          {isLoggedIn && !storyLine && (
+            <>
+              {banner && <WelcomeMessage />}
+              {history.map((his, index) => (
+                <CommandHistory history={his} key={index} />
+              ))}
+              {!showInput && (
+                <HandleFlagEntry
+                  setShowInput={setShowInput}
+                  setHistory={setHistory}
+                  setStoryLine={setStoryLine}
+                />
+              )}
+              {!showQuestion && (
+                <HandleQuestion
+                  setHistory={setHistory}
+                  setShowQuestion={setShowQuestion}
+                />
+              )}
+              {showInput && showQuestion && (
+                <Input
+                  shellInput={shellInput}
+                  setShellInput={setShellInput}
+                  setHistory={setHistory}
+                  setBanner={setBanner}
+                  setShowInput={setShowInput}
+                  cmdHistory={cmdHistory}
+                  setCmdHistory={setCmdHistory}
+                  setShowQuestion={setShowQuestion}
+                />
+              )}
+            </>
+          )}
+        </div>
+      </div>
+      <Sponsers />
+    </div>
   );
 };
 
